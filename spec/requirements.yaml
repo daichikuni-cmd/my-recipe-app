@@ -1,0 +1,23 @@
+app:
+  name: RecipeApp
+  platform: android
+  minSdk: 23
+  targetSdk: 31
+
+features:
+  ingredient:
+    id: REQ-ING-001
+    name: "材料CRUD"
+    fields: ["id","name","unit","caloriesPerUnit","lastPrice","updatedAt"]
+  recipe:
+    id: REQ-RCP-001
+    name: "レシピCRUD"
+    fields: ["id","title","createdAt","ingredients[]","steps[]","photos[]"]
+
+acceptance_tests:
+  - id: AT-001
+    description: "材料を追加して永続化されること"
+    steps:
+      - add_ingredient
+      - restart_app
+      - assert ingredient_present
